@@ -1,0 +1,6 @@
+<!doctype html><meta charset="utf-8"><body>relay<script>
+(async()=>{const f=new URLSearchParams(location.search).get('f');
+ try{const r=await fetch(f);const b=await r.arrayBuffer();
+ (window.opener||window.parent).postMessage({lfRelay:true,name:f.split('/').pop(),type:'video/mp4',buf:b},'*',[b]);document.body.textContent='sent '+b.byteLength;}
+ catch(e){document.body.textContent='ERR '+e.message}})();
+</script>
